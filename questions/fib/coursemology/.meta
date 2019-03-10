@@ -1,0 +1,1 @@
+{"submission":"def two_sum(numbers, target):\r\n    return 0","solution":"","prepend":"","append":"","data_files":[],"test_cases":{"public":[{"expression":"two_sum([2, 7, 11, 15], 9)","expected":"[0, 1]","hint":""},{"expression":"two_sum([2, 7, 11, 15], 100)","expected":"-1","hint":""}],"private":[],"evaluation":[]}}

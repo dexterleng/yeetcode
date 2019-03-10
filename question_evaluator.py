@@ -19,13 +19,12 @@ class QuestionEvaluator:
   def __init__(self):
     self.client = docker.from_env()
   
-  # hardcoded for Python3.7 and TwoSum question
-  # hardcoded solutions
-  def evaluate(self, solution):
+  # hardcoded for Python3.7
+  def evaluate(self, solution, question):
     container = None
     try:
       container = self.client.containers.create(image="coursemology/evaluator-image-python:3.7")
-      self.copy_question_to_container(container, "questions/two_sum/")
+      self.copy_question_to_container(container, question)
       self.copy_solution_to_container(container, solution)
       container.start()
       # wait for container to stop
@@ -108,7 +107,7 @@ class QuestionEvaluator:
     
 
 
-qe = QuestionEvaluator()
-#content = "def two_sum(numbers, target):\n  lookup = {}\n  for i in range(len(numbers)):\n    n = numbers[i]\n    if (target - n) in lookup:\n      return [lookup[target - n], i]\n    lookup[n] = i\n  return -1\n"
-# print(content)
-qe.evaluate("fsfdsffsdfdsafdsfsda")
+# qe = QuestionEvaluator()
+# #content = "def two_sum(numbers, target):\n  lookup = {}\n  for i in range(len(numbers)):\n    n = numbers[i]\n    if (target - n) in lookup:\n      return [lookup[target - n], i]\n    lookup[n] = i\n  return -1\n"
+# # print(content)
+# qe.evaluate("fsfdsffsdfdsafdsfsda")

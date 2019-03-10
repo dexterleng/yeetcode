@@ -17,17 +17,18 @@ class Question extends Component {
   state = {
     code: "",
     loading: false,
-    testcases: this.props.testcases,
+    testcases: [],
     title: null,
     description: null
   }
 
   componentDidMount = async () => {
     const res = await axios.get(this.props.apiUrl);
-    const { title, description } = res.data;
+    const { title, description, testcases } = res.data;
     this.setState({
       title,
-      description
+      description,
+      testcases
     });
   }
 
@@ -87,7 +88,7 @@ class Question extends Component {
                 this.state.testcases.map(testcase => {
                   const doneComponent = testcase.correct === true ? <Done/> : <Clear/>
                   return (
-                    <TableRow key={testcase.name}>
+                    <TableRow key={testcase.name} style={{ backgroundColor: testcase.correct === true ? "#81C784" : "#E57373" }}>
                       <TableCell component="th" scope="row">
                         {testcase.name}
                       </TableCell>
