@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from question_evaluator import QuestionEvaluator
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
 def root():
@@ -14,6 +17,7 @@ def convert_testcase_to_dict(x):
   }
 
 @app.route("/two_sum/", methods=["GET", "POST"])
+@cross_origin()
 def two_sum():
   if request.method == "GET":
     return jsonify({
