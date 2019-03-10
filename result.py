@@ -17,12 +17,12 @@ class Report:
     self.testcases = []
   
 class TestCase:
-  # if there is no failure, failure should be `None`
-  def __init__(self, name, time, meta, failure):
+  def __init__(self, name, time, meta, failure, error):
     self.name = name
     self.time = time
     self.meta = meta
     self.failure = failure
+    self.error = error
 
 class Meta:
   def __init__(self, expected, expression, hint, output):
@@ -35,3 +35,8 @@ class Failure:
   def __init__(self, message, failure_type):
     self.message = message
     self.failure_type = failure_type
+
+class Error:
+  def __init__(self, message, error_type):
+    self.message = message
+    self.error_type = error_type
